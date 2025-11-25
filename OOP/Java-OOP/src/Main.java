@@ -1,5 +1,6 @@
 import com.fake.Car;
 import com.fake.AbtractClass;
+import com.tesla.Tesla;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,10 +9,14 @@ public class Main {
 
         AbtractClass myCar = new AbtractClass("Toyota");
 
-        myCar.start();
-        myCar.stop();
-        myCar.honk();
+//        myCar.start();
+//        myCar.stop();
+//        myCar.honk();
+//
+//        System.out.println("Initial Speed " + focus.getSpeed());
 
-        System.out.println("Initial Speed " + focus.getSpeed());
+        Tesla mySecondCar = new Tesla("Model S", 2020);
+        mySecondCar.displayInfo();
+        mySecondCar.navigate("Home");
     }
 }

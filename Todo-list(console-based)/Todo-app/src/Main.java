@@ -21,7 +21,6 @@ public class Main {
                    System.out.println("New todo Created: " + t.getTodo());
                }
            }
-
         }while(!todo.equals("no"));
         scanner.close();
 
