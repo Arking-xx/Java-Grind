@@ -1,6 +1,8 @@
 import com.fake.Car;
 import com.fake.AbtractClass;
 import com.tesla.Tesla;
+import com.fake.Manager;
+import com.fake.Developer;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,8 +17,16 @@ public class Main {
 //
 //        System.out.println("Initial Speed " + focus.getSpeed());
 
-        Tesla mySecondCar = new Tesla("Model S", 2020);
-        mySecondCar.displayInfo();
-        mySecondCar.navigate("Home");
+//        Tesla mySecondCar = new Tesla("Model S", 2020);
+//        mySecondCar.displayInfo();
+//        mySecondCar.navigate("Home");
+
+        Manager manager = new Manager("Hark", 70000, "Engineering");
+
+        System.out.println(manager.getName());
+        System.out.println(manager.getSalary());
+        manager.work();
+        manager.conductingMeeting();
+
     }
 }
