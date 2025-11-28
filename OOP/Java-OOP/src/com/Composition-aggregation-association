@@ -1,0 +1,76 @@
+Composition
+Composition is a strong kind of “has-a” relationship because the containing object owns it.
+Therefore, the objects’ lifecycles are tied. It means that if we destroy the owner object,
+ its members also will be destroyed with it.
+
+Every Building "has-a" room
+class Building {
+    class Room {}
+}
+
+Alternatively, we can declare that class in a method body as well.
+It doesn’t matter if it’s a named class, an anonymous class or a lambda:
+
+class Building {
+    Room createAnonymousRoom() {
+        return new Room() {
+            @Override
+            void doInRoom() {}
+        };
+    }
+
+    Room createInlineRoom() {
+        class InlineRoom implements Room {
+            @Override
+            void doInRoom() {}
+        }
+        return new InlineRoom();
+    }
+
+    Room createLambdaRoom() {
+        return () -> {};
+    }
+
+    interface Room {
+        void doInRoom();
+    }
+}
+
+
+Aggregation
+Aggregation is also a “has-a” relationship. What distinguishes it from composition, that it doesn’t involve owning. As a result,
+the lifecycles of the objects aren’t tied: every one of them can exist independently of each other.
+
+For example, a car and its wheels. We can take off the wheels, and they’ll still exist.
+We can mount other (preexisting) wheels, or install these to another car and everything will work just fine.
+class Wheel {}
+
+class Car {
+    List<Wheel> wheels;
+}
+
+
+Association
+Association is the weakest relationship between the three.
+It isn’t a “has-a” relationship, none of the objects are parts or members of another.
+
+Association only means that the objects “know” each other. For example, a mother and her child
+
+class Child {}
+
+class Mother {
+    List<Child> children;
+}
+
+Another example:
+class Child {
+    Mother mother;
+}
+
+class Mother {
+    List<Child> children;
+}
+
+
+
+

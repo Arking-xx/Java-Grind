@@ -1,0 +1,17 @@
+this refers to the current object - the object that's currently executing the code.
+
+Solving Name Conflicts (Most Common Use)
+
+class Student {
+    private String name;
+
+    public Student(String name){
+    this.name = name; // this.name = instance variable, name = parameter.
+    this.name is looking up outside of contructor its pointing to the name field.
+    }
+
+    public void setName(String name){
+    this.name = name;  // Clearly distinguishes instance variable from parameter
+
+    }
+}

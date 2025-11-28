@@ -1,0 +1,81 @@
+each instance of class (each object) get its own instance variables.
+instance variable are visible within class and other classes. depending on access modifiers.
+
+access modifiers are:
+            Owning Class           Package              Package + Subclass                    Everywhere
+public          y                     y                         y                                 y
+private         y                     x                         x                                 x
+protected       y                     y                         y                                 x
+default         y                     y                         x                                 x
+
+class Person {
+    String name;  // name is an instance variable with the type of String
+    int age;    // age is an instance variable with the type of int
+}
+
+"why we need instance variable?"
+it because each object has its own state, for example think about a Car class
+
+if we declare a class Car with field like this:
+
+static String color; // imagine this as a color of car.
+
+Car.color = "Red" // all car has a red color since we declare it as static doesn't make sense
+
+unlike this:
+
+String color;
+
+public Car(String color){
+      this.color = color;
+     }
+
+// each car has its own color
+Car car1 = new Car("Red");
+Car car2 = new Car("Blue");
+
+
+How we identify local and instance variable?
+
+class Student {
+
+    // we can identify instance variable because it lived inside of class, outside of method
+    String name;
+    int age;
+    double gpa;
+
+    public Student(String name, int age) {
+        // Local variables.
+        // compiler error if local variable is not initial or not given default values
+        String temp = "Creating student: " + name; // Local variable
+        int counter = 0; // Local variable
+
+        this.name = name;
+        this.age = age;
+        this.gpa = 0.0; // assign value
+        } // temp and counter are destroy here when app stop running
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
