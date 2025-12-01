@@ -1,0 +1,79 @@
+super() keyword is use for calling the constructor parent and it should in the line inside of constructor
+
+Example
+
+public class Superb extends SuperBase {
+
+    public(String message){
+    super(message); // as you can see we declare the super keyword at the first line inside of constructor
+
+    others..
+    }
+}
+
+and we can use it like this:
+
+Superb child = new Superb("hello from child class");
+// the new keyword is invoked which itself invoked the parent constructor first and passes the string data.
+
+
+
+Accessing parent class viriables.
+
+
+public class SuperBase {
+
+    String message = "Hi from super class"
+
+    public SuperBase(String message){
+    this.message = message;
+    }
+  }
+
+in the child class
+
+public class Superb extends SuperBase {
+
+    String message = "child class"
+
+    public void getParentMessage(){
+    System.out.println(super.message)
+    }
+}
+
+we can access the parent class by using the super with dot if its inside the method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,263 @@
+example for usage of static
+
+class Parent {
+    // static method
+    static void display(){
+    System.out.println("Parent display");
+    }
+}
+
+
+class Child extends Parent{
+    // looks overriding the display method but its not.
+    static void display(){
+    System.out.println("Child display");
+    }
+}
+
+
+Parent obj = new Child()
+
+obj.display() // Output: "Parent display"
+              // Static method is called from parent class, not in the actual object of child class.
+
+      Why this happens?
+      this happens because Static methods are resolved at compile time
+      Instance methods are resolved at runtime
+
+----------------------------------------------------------------------------------------------------------------------
+
+// instance methods can access both instance variable and static members
+class Example {
+
+    String instanceVar = "instance";
+
+    static String staticVar = "static"
+
+    public void instanceMethod(){
+    // Can access instance variable;
+        System.void.println(instanceVar);
+
+    anotherInstanceMethod();
+
+    System.out.print(staticVar);
+
+    // can access static method
+    staticMethod();
+    }
+
+    public void anotherInstanceMethod(){
+        System.out.println("another instance method");
+    }
+
+    static void staticMethod(){
+        System.out.println("static method");
+    }
+}
+
+
+
+for static methods it can only access with the same static members directly
+
+class Example {
+
+    String instanceVar = "instance";
+
+    static String staticVar = "static"
+
+    static void staticMethod1(){
+    // Cannot access instance variable;
+        System.void.println(instanceVar);
+
+    // same with this
+    anotherInstanceMethod();
+
+    // can can acess static variable
+    System.out.print(staticVar);
+
+    // can access static method
+    staticMethod();
+    }
+
+    public void anotherInstanceMethod(){
+        System.out.println("another instance method");
+    }
+
+    static void staticMethod(){
+        System.out.println("static method");
+    }
+}
+
+// static variable can access instance variable via object refence
+
+class Example {
+    String instance = "instance"
+
+
+    static void staticMethod(){
+    System.out.print(instance) // cannot access directly
+
+    // can access through object reference
+    Example obj = new Example()
+    System.out.println(obj.instance));
+    obj.instanceMethod();
+    }
+
+    public void instanceMethod() {
+    System.out.println("instance method called");
+    }
+
+}
+
+--------------------------------------------------------------------------------------------------------------------
+
+static in code blocks
+
+sometimes we initialize static variables directly during declaration, However, if the static variables require
+multi-statement logic during initialization we can use the static code block instead.
+
+for instance, let's initialize a list of objects with some predefined values using static block of code.
+
+public class StaticBlock {
+    public static List<String> ranks = new LinkList<>();
+
+    //static code block
+
+    static {
+       ranks.add("Lieutenant");
+       ranks.add("Captain");
+       ranks.add("Major");
+    }
+
+    static {
+      ranks.add("Colonel");
+      ranks.add("General");
+    }
+}
+
+// static inner class
+
+   so java allow us to create nested class
+
+   so in general there's two nested class architecture
+
+   1. nested classes that we declare static are called static nested classes
+   2. nested classes that are non-static are called inner classes
+
+   also take note that these two behave different the inner class have access to all members
+   within the enclosing class including the private ones, whereas the static nested classes only have
+   access to static members of the outer class.
+
+example codes
+
+// for static nested class
+class OuterClass{
+    private static String staticMessage = "static message";
+    private String instanceMessage = "Instance message";
+
+   static class staticNestedClass{
+    void display(){
+        // can access static members outside of class
+        System.out.println(staticMessage);
+
+        // cannot access instance members
+        System.out.println(instanceMessage);
+
+        // can create its own instance member
+        String ex = "hello";
+        System.out.println(ex);
+    }
+   }
+}
+
+// for inner class example
+
+class OuterClass {
+    private static String staticMessage = "Static message";
+    private String instanceMessage = "Instance message";
+
+    // Inner class (non-static)
+    class InnerClass {
+        void display() {
+            // can access BOTH static members
+            System.out.println(staticMessage);    // Works
+
+            // can access instance members too!
+            System.out.println(instanceMessage);  // Works
+
+            // can even access private instance members
+            String combined = staticMessage + " - " + instanceMessage;
+            System.out.println(combined);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

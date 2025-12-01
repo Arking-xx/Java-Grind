@@ -1,6 +1,5 @@
 this refers to the current object - the object that's currently executing the code.
-
-Solving Name Conflicts (Most Common Use)
+ and it also good for solving name Conflicts (Most Common Use)
 
 class Student {
     private String name;
@@ -12,6 +11,5 @@ class Student {
 
     public void setName(String name){
     this.name = name;  // Clearly distinguishes instance variable from parameter
-
     }
 }
