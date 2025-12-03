@@ -1,0 +1,75 @@
+
+we use (==) if we want to check if two objects are the same in memory.
+
+Sting s1 = "hello";
+String s2 = "hello";
+String s3 = new String("hello");
+
+
+System.out.println(s1 == s2); // true
+System.out.println(s1 == s3); // false, s3 is different object
+
+
+// we can compare also data if same content/data using the Override .equals
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age){
+    this.name = name;
+    this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+    if (this == obj) // same reference
+    if(obj == null || getClass() != obj.getClass()) return false
+
+    Person person = (Person) obj;
+    return age == person.age && Object.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name, age);
+    }
+}
+
+// usage
+
+Person p1 = new Person("Alice", 25);
+Person p2 = new Person("Alice", 25);
+Person p3 = new Person("bob", 35);
+
+System.out.println(p1.euals(p2)); // true (same data)
+System.out.println(p1.equals(p3)); // false different data
+
+// we can also use Comparator Interface (Custom Ordering) if we want multiple and different ways to sort objects.
+
+class Product {
+     String name;
+     double price;
+     int quantity;
+
+     public Product (String name, double price, int quantity){
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+     }
+}
+
+// Different Comparator for different sorting needs
+Comparator<Product> byPrice = Comparator.comparingDouble(p -> p.price);
+Comparator<Product> byQuantity = Comparator.comparingDouble(p -> p.quantity);
+Comparator<Product> byName = Comparator.comparingDouble(p -> p.name);
+
+// Complex comparator: sort by price (ascending), then quantity (descending)
+Comparator<Product> priceQuantity = Comparator
+.comparingDouble((Product p) -> p.price)
+.thenComparingInt(p -> -p.quantity); // negative for ascending
+
+
+
+
+
+
