@@ -40,6 +40,8 @@ How we identify local and instance variable?
 class Student {
 
     // we can identify instance variable because it lived inside of class, outside of method
+    // these field has default value on it with string is not explicitly initialize, is null for int = 0 and so on
+    // and so fort
     String name;
     int age;
     double gpa;

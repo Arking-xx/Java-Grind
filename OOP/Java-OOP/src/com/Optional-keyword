@@ -1,0 +1,89 @@
+The purpose of Optional-keyword is for type level solution for representing optional values
+instead of null reference. here some of example when or when not to use optional-keyword
+
+//  returns null
+public User findUserbyId(int id){
+return userRepository.findById(id);
+}
+
+// instead we can use optional which return optional values and not null
+// if an object has no data on it
+
+public Optional<User> findUserById(int id){
+    User user = userRepository.findById(id);
+    return Optional.ofNullable(user)
+}
+
+// when use caller must handle absence
+Optional<User> userOpt = findUserById(123);
+if(userOpt.isPresent()){
+    User user = userOpt.get();
+    // process
+    }else {
+    //  not found
+    }
+
+
+
+// prone to NullPointerException
+public String getCityName(Order order){
+    if(order != null){
+    Customer customer = order.getCustomer();
+    if(customer != null) {
+    Address address = customer.getAddress();
+    if (address != null) {
+    return address.getCity();
+       }
+    }
+    return "Unknown";
+}
+
+// instead we can use Optional for safety
+public String getCityName(Order order){
+    return Optional.ofNullable(order)
+            .map(Order::getCustomer)
+            .map(Customer::getAddress)
+            .map(Address::getCity)
+            .orElse("unknown");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
