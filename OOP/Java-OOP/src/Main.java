@@ -8,6 +8,9 @@ import com.fake.PersonRecord;
 import com.fake.Pizza;
 
 import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Consumer;
 
 
 enum Priority {
@@ -63,5 +66,26 @@ public class Main {
         enumMap.put(Priority.MEDIUM, "Normal");
         enumMap.put(Priority.LOW, "When possible");
 
+//        Map<String, Integer> nameMap = new HashMap<>();
+//        Integer value = nameMap.computeIfAbsent("John", s -> s.length());
+//        System.out.println("Namemap: " + value);
+
+        Map<String, Integer> salaries = new HashMap<>();
+        salaries.put("John", 4000);
+        salaries.put("Freedy", 9000);
+        salaries.put("Samuel", 5000);
+
+        salaries.replaceAll((name, oldValue) -> name.equals("Freedy") ? oldValue : oldValue + 1000);
+        System.out.println(salaries);
+
+        fetachData(result -> {
+            System.out.println("Received: " + result);
+        });
+    }
+
+    public static void fetachData(Consumer<String> callback) {
+        String data = "Hello from callback";
+
+        callback.accept(data);
     }
 }
