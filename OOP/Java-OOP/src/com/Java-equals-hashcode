@@ -1,0 +1,48 @@
+1.Rule 1: Consistency
+a.equals(b) == true -> a.hashCode() === b.hashCode();
+
+
+2. Symmetry
+a.equals(b) === true <-> b.equals(a) === true;
+
+
+3. Transitive
+if a.equals(b) && b.equals(c) -> a.equals(c)
+
+
+4. Reflexivity
+a.equals(a) === true // object must equals to itself
+
+
+5. Non-null
+a.equals(null) == false // no object equals null
+
+
+Example
+class BrokenPerson{
+    String name;
+    int age;
+
+    public BrokenPerson(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    // Only equals() without hashCode() - Breaks the contract!
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        BrokenPerson that = (BrokenPerson) obj;
+        return age == that.age && Object.equals(name, that.name);
+    }
+
+    Missing hashCode implementation
+
+    take note always Override .equals and hashCode()
+}
+
+
+
+
+

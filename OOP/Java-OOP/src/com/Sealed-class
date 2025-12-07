@@ -1,0 +1,62 @@
+Sealed classes let you control exactly WHO can extends/implements your class/interface.
+
+sealed class Person permits Admin, User, Guest {
+    String name;
+    Person(String name){
+    this.name = name
+    }
+}
+
+final class Admin extends Person {
+    Admin(String name){
+    super(name);
+    }
+}
+
+final class User extends Person {
+    User(String name){
+       super(name);
+    }
+}
+
+final class Guest extends Person {
+    Guest(String name){
+       super(name);
+    }
+}
+
+// Error not permit by Person class
+final class Hacker extends Person {
+    Hacker(String name){
+       super(name);
+    }
+}
+
+
+// real world use cases
+
+sealed interface Payment permits CreditCard, PayPal, BankTransfer {
+    double getAmount();
+}
+
+record CreditCard(String cardNumber, double amount) implements Payment {
+    @Override
+    public double getAmount() { return amount; }
+}
+
+record PayPal(String email, double amount) implements Payment {
+    @Override
+    public double getAmount() { return amount; }
+}
+
+record BankTransfer(String accountNumber, double amount) implements Payment {
+    @Override
+    public double getAmount() { return amount; }
+}
+
+
+
+
+
+
+
