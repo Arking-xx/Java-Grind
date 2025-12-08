@@ -28,9 +28,12 @@ public class Main {
             }
             case 2 -> {
                 System.out.println("Credit card payment");
+                creditCardPayment();
             }
             default -> System.out.println("Option doesn't exist");
         }
+        scanner.close();
+
     }
 
     private static void displayMenu() {
@@ -49,10 +52,31 @@ public class Main {
         System.out.print("Enter currency: ");
         currency = scanner.nextLine();
 
+        System.out.print("Enter email: ");
+        email = scanner.nextLine();
+
+        scanner.close();
+
+        Payment paypal = new PayPalPayment(id, amount, currency, email);
+        paypal.proccessPayment();
+    }
+
+    private static void creditCardPayment() {
+        System.out.print("Enter transaction id: ");
+        id = scanner.nextLine();
+
+        System.out.print("Enter amount: ");
+        amount = Double.parseDouble(scanner.nextLine());
+
+        System.out.print("Enter currency: ");
+        currency = scanner.nextLine();
+
         System.out.print("Enter card number: ");
         cardNumber = scanner.nextLine();
 
-        Payment paypal = new PayPalPayment(id, amount, currency, cardNumber);
-        paypal.proccessPayment();
+        scanner.close();
+
+        Payment creditCard = new CreditCardPayment(id, amount, currency, cardNumber);
+        creditCard.proccessPayment();
     }
 }
