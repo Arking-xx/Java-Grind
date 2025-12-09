@@ -1,0 +1,7 @@
+String fifth = "Baeldung";
+String sixth = new String("Baeldung");
+System.out.println(fifth == sixth); // False
+Copy
+In general, we should use the String literal notation when possible.
+It is easier to read and it gives the compiler a chance to optimize our code.
+
