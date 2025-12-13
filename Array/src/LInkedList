@@ -1,0 +1,26 @@
+LinkedList is a doubly-linked list implementation of the List and Deque interfaces.
+It implements all optional list operations and permits all elements (including null).
+
+how do you create a LinkedList?
+Example:
+LinkedList<Object> linkedList = new LinkedList<>();
+
+Memory Usage
+LinkedList use more memory than a ArrayList because stores two reference
+
+Example
+LinkedList stores elements with pointers:
+[10|→] → [20|→] → [30|→] → [40|→] → [50|→]
+ data     data     data     data     data
+ next     next     next     next     next
+ prev     prev     prev     prev     prev
+
+ Unlike ArrayList
+ ArrayList stores elements in a continuous array:
+ [10][20][30][40][50]
+   ↑   ↑   ↑   ↑   ↑
+ Just the data, nothing else
+
+ ArrayList is more common use in backend
+
+
