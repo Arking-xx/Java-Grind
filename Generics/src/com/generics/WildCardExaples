@@ -1,0 +1,31 @@
+class WildcardExamples {
+
+    // 1. UNBOUNDED WILDCARD (?)
+    // Accepts List of ANY type
+    public static void printList(List<?> list) {
+        System.out.print("List: [");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i));
+            if (i < list.size() - 1) System.out.print(", ");
+        }
+        System.out.println("]");
+    }
+
+    // 2. UPPER BOUNDED WILDCARD (? extends Type)
+    // Accepts List of Number or its subclasses (Integer, Double, etc.)
+    public static double sumNumbers(List<? extends Number> numbers) {
+        double sum = 0;
+        for (Number num : numbers) {
+            sum += num.doubleValue();
+        }
+        return sum;
+    }
+
+    // 3. LOWER BOUNDED WILDCARD (? super Type)
+    // Accepts List of Integer or its superclasses (Number, Object)
+    public static void addIntegers(List<? super Integer> list) {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+    }
+}
